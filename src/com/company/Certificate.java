@@ -5,8 +5,6 @@ import java.util.List;
 
 public abstract class Certificate {
 
-
-
 	public String ID;
 	protected   String error;
 

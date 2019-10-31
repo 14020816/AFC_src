@@ -40,7 +40,6 @@ public class OnewayTicket extends Ticket {
         return false;
     }
 
-
     @Override
     public void displayInformation() {
         super.displayInformation();
