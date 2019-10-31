@@ -65,7 +65,7 @@ public class AFCController {
 						continue;
 					}
 				}else{
-					Boolean result =  ((Ticket)certificate).validateEnterTicket(enterStaion.ID);
+					Boolean result =  ((Ticket)certificate).validateEnterTicket(enterStaion.ID, stationCatalog);
 					if(!result){
 						screen.displayErrorMessage("Invalid Ticket");
 						continue;

@@ -5,7 +5,6 @@ import org.omg.CORBA.PUBLIC_MEMBER;
 import java.util.List;
 
 public class Station {
-	public static List<Station> stationCatalog;
 
 	public String name;
 

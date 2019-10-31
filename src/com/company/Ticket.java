@@ -1,4 +1,7 @@
 package com.company;
+
+import java.util.List;
+
 public abstract class Ticket extends Certificate {
 	public enum STATUS{
 		NEW,
@@ -20,6 +23,6 @@ public abstract class Ticket extends Certificate {
 		System.out.println("*****Ticket information*****");
 	}
 
-	public abstract boolean validateEnterTicket(char enterStation);
-	public abstract boolean validateExitTicket(char exitStation);
+	public abstract boolean validateEnterTicket(char enterStation, List<Station> stationCatalog);
+	public abstract boolean validateExitTicket(char exitStation, List<Station> stationCatalog);
 }

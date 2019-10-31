@@ -11,8 +11,6 @@ public class Certificate {
 
 	public CertificateType.TYPE type;
 
-	public static List<Certificate> certificateCatalog;
-
 	public static Certificate getCertificate(String ID, List<Certificate> certificateCatalog) {
 		for(int i = 0; i < certificateCatalog.size(); i++){
 			if(certificateCatalog.get(i).ID == ID){
