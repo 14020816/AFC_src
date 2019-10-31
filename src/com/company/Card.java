@@ -1,18 +1,13 @@
 package com.company;
 
-public class Card extends Certificate {
+public abstract class Card extends Certificate {
     public static final float BASE_FARE = (float) 1.9;
-    public  float balance;
-    public  int lastStaion;
-    public  Card(String ID, float balance){
+
+    public  Card(String ID){
         super(ID);
-        this.type = TYPE.CADR;
-        this.balance = balance;
-        this.lastStaion = -1;
     }
 
-    public void charge(float money){
-        this.balance += money;
-    }
+    public abstract boolean validateEnter(int enterStation);
+    public abstract boolean validateExit(int enterStation);
 
 }

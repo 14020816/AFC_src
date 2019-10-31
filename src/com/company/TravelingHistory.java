@@ -27,8 +27,7 @@ public class TravelingHistory {
 		if(travelCatalog == null){
 			travelCatalog = new ArrayList<TravelingHistory>();
 		}
-
-		travelCatalog.add(new TravelingHistory(ACTION.ENTER, time, station,++IDCOUNT))
+		travelCatalog.add(new TravelingHistory(ACTION.ENTER, time, station,id));
 	}
 
 	public static void recordExitTraveling(String endTime, int endStation, String id) {
@@ -47,12 +46,12 @@ public class TravelingHistory {
 		return 0;
 	}
 
-	public TravelingHistory(ACTION action, String time, int station, String id){
+	public TravelingHistory(ACTION action, String time, int station, String certificateID){
 		this.action = action;
 		this.time = time;
 		this.station = station;
-		this.certificateID = id;
-		this.ID = TravelingHistory.IDCOUNT;
+		this.certificateID = certificateID;
+		this.ID = ++TravelingHistory.IDCOUNT;
 	}
 
 }
