@@ -6,8 +6,4 @@ public abstract class Card extends Certificate {
     public  Card(String ID){
         super(ID);
     }
-
-    public abstract boolean validateEnter(int enterStation);
-    public abstract boolean validateExit(int enterStation);
-
 }

@@ -3,13 +3,12 @@ package com.company;
 import java.util.List;
 
 
-public class Certificate {
+public abstract class Certificate {
 
 
 
 	public String ID;
-
-	public CertificateType.TYPE type;
+	protected   String error;
 
 	public static Certificate getCertificate(String ID, List<Certificate> certificateCatalog) {
 		for(int i = 0; i < certificateCatalog.size(); i++){
@@ -27,7 +26,12 @@ public class Certificate {
 	public  Certificate(){}
 
 	public  void displayInformation(){}
-
-
+	public  abstract boolean validateEnter(char enterStaion);
+	public  abstract boolean validateExit(float distance);
+	public  void dispayError(){
+		if(error != null){
+			System.out.println(error);
+		}
+	}
 
 }

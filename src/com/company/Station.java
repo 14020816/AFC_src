@@ -34,17 +34,20 @@ public class Station {
 	}
 
 	public static float getDistance(char enterStaion, char exitStation, List<Station> stationCatalog){
+		char enter = enterStaion;
+		char exit = exitStation;
+		if((int)enterStaion > (int)exitStation){
+			enter = exitStation;
+			exit = enterStaion;
+		}
 		if(getStationByID(enterStaion, stationCatalog) == null || getStationByID(exitStation, stationCatalog) == null || enterStaion == exitStation){
 			return  0;
 		}else{
 			float distance = 0;
-			for(int i =0; i < (int)exitStation - (int)enterStaion; i++){
-				distance += getStationByID((char)(int)(enterStaion + i), stationCatalog).distance;
+			for(int i =0; i < (int)exit - (int)enter; i++){
+				distance += getStationByID((char)(int)(enter + i), stationCatalog).distance;
 			}
 			return  distance;
 		}
 	}
-
-
-
 }

@@ -6,7 +6,6 @@ public class  PrepaidCard extends Card {
 
 	public  PrepaidCard(String ID, float balance){
 		super(ID);
-		this.type = CertificateType.TYPE.PREPAIDCARD;
 		this.balance = balance;
 		this.lastStaion = -1;
 	}
@@ -19,14 +18,26 @@ public class  PrepaidCard extends Card {
 	}
 
 	@Override
-	public boolean validateEnter(int enterStation) {
-		return false;
+	public boolean validateEnter(char enterStaion) {
+		if(this.balance >= FareCaculator.BASE_FARE){
+			return  true;
+		}
+		return  false;
 	}
 
 	@Override
-	public boolean validateExit(int enterStation) {
-		return false;
+	public boolean validateExit(float distance) {
+		float fare = FareCaculator.fareCaculate(distance);
+		if(this.balance > fare){
+			this.balance = this.balance - fare;
+			return true;
+		}
+		return  false;
 	}
 
+	@Override
+	public void dispayError() {
+
+	}
 
 }
