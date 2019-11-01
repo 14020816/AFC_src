@@ -43,6 +43,7 @@ public class OnewayTicket extends Ticket {
     @Override
     public void displayInformation() {
         super.displayInformation();
-        System.out.println("Type: One way ticket: " );
+        System.out.println("Type: One way ticket     ID: " + this.ID);
+        System.out.println("Balance: " + this.balance);
     }
 }

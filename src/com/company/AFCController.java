@@ -1,14 +1,19 @@
 package com.company;
 
+import hust.soict.se.customexception.InvalidIDException;
+
 import java.io.IOException;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 public class AFCController {
 
-	public boolean ValidateCertificate(String inputStation, int certificateNumber, List<Station> stationCatalog, List<Certificate> certificateCatalog) throws IOException {
+	public boolean ValidateCertificate(String inputStation, int certificateNumber, List<Station> stationCatalog, List<Certificate> certificateCatalog) throws IOException, InvalidIDException {
         try {
+
+        	String ticketID = TicketRecognierInterface.requestConvertBarCodeToTicketID("ijklmnop");
             Station enterStaion = Station.getStationByID(inputStation.charAt(0), stationCatalog);
 
             if(enterStaion == null){

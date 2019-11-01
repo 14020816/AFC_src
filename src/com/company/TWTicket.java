@@ -49,6 +49,7 @@ public class TWTicket extends Ticket {
     @Override
     public void displayInformation() {
         super.displayInformation();
-        System.out.println("Type: 24H way ticket: " );
+        System.out.println("Type: 24H way ticket: 	ID:" + this.ID );
+        System.out.println("Time start: " + this.startTime);
     }
 }

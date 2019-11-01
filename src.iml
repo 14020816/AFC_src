@@ -7,6 +7,39 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../Material/SDK+spec/Java/cardScanner/cardscanner.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="jar://$MODULE_DIR$/../../../../Material/SDK+spec/Java/cardScanner/cardscanner.jar!/doc" />
+        </JAVADOC>
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../Material/SDK+spec/Java/gate/gate.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="jar://$MODULE_DIR$/../../../../Material/SDK+spec/Java/gate/gate.jar!/doc" />
+        </JAVADOC>
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../../../Material/SDK+spec/Java/ticketRecognizer" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="file://$MODULE_DIR$/../../../../Material/SDK+spec/Java/ticketRecognizer/doc" />
+        </JAVADOC>
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/../../../../Material/SDK+spec/Java/ticketRecognizer" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>
-

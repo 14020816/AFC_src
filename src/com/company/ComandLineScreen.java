@@ -1,5 +1,7 @@
 package com.company;
 
+import hust.soict.se.customexception.InvalidIDException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -40,7 +42,7 @@ public class ComandLineScreen {
 		return  line;
 	}
 
-	public static  void main(String[] args) throws IOException {
+	public static  void main(String[] args) throws IOException, InvalidIDException {
 		init();
 		while (true){
 			String inputStation = new String();

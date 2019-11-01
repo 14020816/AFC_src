@@ -1,8 +1,12 @@
 package  com.company;
+import hust.soict.se.customexception.InvalidIDException;
+import hust.soict.se.recognizer.TicketRecognizer;
+
 public class TicketRecognierInterface {
 
-	public char requestConvertBarCodeToTicketID() {
-		return 0;
+	public static String requestConvertBarCodeToTicketID( String pseudoBarCode) throws InvalidIDException { ;
+		TicketRecognizer ticketRecognizer = TicketRecognizer.getInstance();
+		return ticketRecognizer.process(pseudoBarCode);
 	}
 
 }
