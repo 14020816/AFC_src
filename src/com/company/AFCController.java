@@ -59,4 +59,57 @@ public class AFCController {
         }
 	}
 
+	public boolean validateEnter(char inputStation, int certificateNumber, List<Station> stationCatalog, List<Certificate> certificateCatalog, List<TravelingHistory> travelingHistoryCatalog){
+        Station enterStation = Station.getStationByID(inputStation, stationCatalog);
+        if(enterStation == null){
+            ComandLineScreen.displayMessage("Invalid enter station");
+            return  false;
+        }
+        ComandLineScreen.displayMessage("*******ENTER STATION**********");
+        if(certificateNumber < 0 || certificateNumber >= certificateCatalog.size()){
+            ComandLineScreen.displayMessage("Invalid certificateNumber");
+            return  false;
+        }
+        Certificate certificate = certificateCatalog.get(certificateNumber);
+        if(certificate ==  null){
+            ComandLineScreen.displayMessage("Invalid certificateNumber");
+            return  false;
+        }
+        if(certificate.validateEnter(enterStation.ID) == false){
+            certificate.dispayError();
+            return  false;
+        };
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        enterStation.displayInformation();
+        certificate.displayInformation();
+        TravelingHistory.recordEnterTraveling(timeStamp, enterStation.ID, certificate.ID);
+        GateInterface.requestToOpenGate();
+        return  false;
+    }
+
+    public boolean validateExit(char inputStation, int certificateNumber, List<Station> stationCatalog, List<Certificate> certificateCatalog, List<TravelingHistory> travelingHistoryCatalog){
+        Station exitStaion = Station.getStationByID(inputStation, stationCatalog);
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        if(exitStaion == null){
+            ComandLineScreen.displayMessage("Invalid exit station");
+            return  false;
+        }
+        Certificate certificate = certificateCatalog.get(certificateNumber);
+        if(certificate ==  null){
+            ComandLineScreen.displayMessage("Invalid certificateNumber");
+            return  false;
+        }
+        ComandLineScreen.displayMessage("*******EXIT STATION**********");
+        timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        Station enterStaion = Station.getLastStationByTicketID(certificate.ID, travelingHistoryCatalog, stationCatalog);
+        if(certificate.validateExit(Station.getDistance(enterStaion.ID, exitStaion.ID, stationCatalog)) == false){
+            return  false;
+        }
+        exitStaion.displayInformation();
+        certificate.displayInformation();
+        TravelingHistory.recordExitTraveling(timeStamp, enterStaion.ID, certificate.ID);
+        GateInterface.requestToOpenGate();
+        return  false;
+    }
+
 }

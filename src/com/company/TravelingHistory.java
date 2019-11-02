@@ -18,12 +18,12 @@ public class TravelingHistory {
 
 	private String time;
 
-	private int station;
+	private char station;
 
 
 	public static List<TravelingHistory> travelCatalog;
 
-	public static void recordEnterTraveling(String time, int station, String id) {
+	public static void recordEnterTraveling(String time, char station, String id) {
 		if(travelCatalog == null){
 			travelCatalog = new ArrayList<TravelingHistory>();
 		}
@@ -46,12 +46,19 @@ public class TravelingHistory {
 		return 0;
 	}
 
-	public TravelingHistory(ACTION action, String time, int station, String certificateID){
+	public TravelingHistory(ACTION action, String time, char station, String certificateID){
 		this.action = action;
 		this.time = time;
 		this.station = station;
 		this.certificateID = certificateID;
 		this.ID = ++TravelingHistory.IDCOUNT;
+	}
+	public String getCertificateID(){
+		return  this.certificateID;
+	}
+
+	public char getStation(){
+		return this.station;
 	}
 
 }

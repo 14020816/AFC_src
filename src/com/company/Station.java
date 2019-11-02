@@ -50,4 +50,12 @@ public class Station {
 			return  distance;
 		}
 	}
+	public  static Station getLastStationByTicketID(String certificateID, List<TravelingHistory> travelingHistoryList, List<Station> stationList){
+	    for(int i = travelingHistoryList.size() -1; i >= 0; i-- ){
+	        if(travelingHistoryList.get(i).getCertificateID().equals(certificateID)){
+                return  getStationByID(travelingHistoryList.get(i).getStation(), stationList);
+            }
+        }
+	    return null;
+    }
 }

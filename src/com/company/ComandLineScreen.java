@@ -45,9 +45,15 @@ public class ComandLineScreen {
 	public static  void main(String[] args) throws IOException, InvalidIDException {
 		init();
 		while (true){
-			String inputStation = new String();
-			while (inputStation == null || inputStation.isEmpty()){
-				inputStation = inputEnterAndExitStation();
+			mainScreen();
+//			String inputStation = new String();
+//			while (inputStation == null || inputStation.isEmpty()){
+//				inputStation = inputEnterAndExitStation();
+//			}
+			Action action = getAction();
+			if(action == null){
+				displayMessage("Error action");
+				continue;
 			}
 
 //			String barCode = new String();
@@ -55,6 +61,7 @@ public class ComandLineScreen {
 //				barCode = inputBarCode();
 //			}
 			AFCController controller = new AFCController();
+			action.requestAction
 			int cert = selectCertificate();
 
 			if(controller.ValidateCertificate(inputStation, cert, stationCatalog, certificateCatalog) == false){
@@ -101,5 +108,24 @@ public class ComandLineScreen {
 		}
 
 	}
+	private  static  void mainScreen(){
+		System.out.println("These are stations in the line M14 of Paris: \n" +
+				"a. Saint-Lazare \nb. Madeleine \nc. Pyramides \nd. Chatelet \ne. Gare de Lyon \nf. Bercy \ng. Cour Saint-Emilion \nh. Bibliotheque Francois Mitterrand \ni. Olympiades \n" +
+				"Available actions: 1-enter station, 2-exit station ");
+	}
+
+	public static  Action getAction() throws IOException {
+		String action = getLine();
+		if(action.length() != 3){
+			return  null;
+		}
+		if(action.charAt(0) == '1'){
+			return  new EnterAction(action.charAt(2));
+		}else  if(action.charAt(0) == 2){
+			return  new ExitAction(action.charAt(2));
+		}
+		return  null;
+	}
+
 
 }
