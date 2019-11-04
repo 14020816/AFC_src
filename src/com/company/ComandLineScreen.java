@@ -56,22 +56,25 @@ public class ComandLineScreen {
 				continue;
 			}
 
-//			String barCode = new String();
-//			while (barCode == null || barCode.isEmpty()){
-//				barCode = inputBarCode();
-//			}
+			String barCode = new String();
+			while (barCode == null || barCode.isEmpty()){
+				barCode = inputBarCode();
+			}
 			AFCController controller = new AFCController();
-			action.requestAction
-			int cert = selectCertificate();
-
-			if(controller.ValidateCertificate(inputStation, cert, stationCatalog, certificateCatalog) == false){
+			if(action.requestAction(controller, barCode, stationCatalog, certificateCatalog,travelingHistoryCatalog) == false){
 				continue;
 			}
+//			int cert = selectCertificate();
+
+//			if(controller.ValidateCertificate(inputStation, cert, stationCatalog, certificateCatalog) == false){
+//				continue;
+//			}
 		}
 	}
 
 	private static List<Station> stationCatalog;
 	private static List<Certificate> certificateCatalog;
+	private  static  List<TravelingHistory> travelingHistoryCatalog;
 
 	public static void init(){
 		// write your code here
@@ -87,10 +90,12 @@ public class ComandLineScreen {
 		stationCatalog.add(new Station('i', "Olympiades",0));
 
 		certificateCatalog = new ArrayList<Certificate>();
-		certificateCatalog.add(new PrepaidCard("PC201910310001", (float)100));
-		certificateCatalog.add(new OnewayTicket("OW201910310001", 'd','i', (float) 4.3));
-		certificateCatalog.add(new TWTicket("TF201910310001",""));
-		certificateCatalog.add(new TWTicket("TF201910310002","2019.10.30.14.35.00"));
+		certificateCatalog.add(new PrepaidCard("9ac2197d9258257b", (float)5.65));
+		certificateCatalog.add(new OnewayTicket("e8dc4081b13434b4", 'd','i', (float) 4.3));
+		certificateCatalog.add(new TWTicket("07c84c6c4ba59f88",""));
+		certificateCatalog.add(new TWTicket("bab1246b02772bb0","2019.10.30.14.35.00"));
+
+		travelingHistoryCatalog = new ArrayList<TravelingHistory>();
 	}
 
 	public static int selectCertificate() throws IOException {
@@ -121,7 +126,7 @@ public class ComandLineScreen {
 		}
 		if(action.charAt(0) == '1'){
 			return  new EnterAction(action.charAt(2));
-		}else  if(action.charAt(0) == 2){
+		}else  if(action.charAt(0) == '2'){
 			return  new ExitAction(action.charAt(2));
 		}
 		return  null;

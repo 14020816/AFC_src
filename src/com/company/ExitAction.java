@@ -7,8 +7,8 @@ import java.util.List;
 
 public class ExitAction extends Action {
     @Override
-    public void requestAction(AFCController controller, int certificateNumber, List<Station> stationCatalog, List<Certificate> certificateCatalog,  List<TravelingHistory> travelingHistoryCatalog) throws IOException, InvalidIDException {
-        controller.validateExit(this.station, certificateNumber, stationCatalog, certificateCatalog, travelingHistoryCatalog);
+    public boolean requestAction(AFCController controller, String barcode, List<Station> stationCatalog, List<Certificate> certificateCatalog,  List<TravelingHistory> travelingHistoryCatalog) throws IOException, InvalidIDException {
+        return controller.validateExit(this.station, barcode, stationCatalog, certificateCatalog, travelingHistoryCatalog);
     }
     public ExitAction(char station){
         this.station = station;

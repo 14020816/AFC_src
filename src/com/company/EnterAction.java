@@ -7,8 +7,8 @@ import java.util.List;
 
 public class EnterAction extends Action {
     @Override
-    public void requestAction(AFCController controller, int certificateNumber, List<Station> stationCatalog, List<Certificate> certificateCatalog,  List<TravelingHistory> travelingHistoryCatalog) throws IOException, InvalidIDException {
-        controller.validateEnter(this.station, certificateNumber, stationCatalog, certificateCatalog, travelingHistoryCatalog);
+    public boolean requestAction(AFCController controller, String barcode, List<Station> stationCatalog, List<Certificate> certificateCatalog,  List<TravelingHistory> travelingHistoryCatalog) throws IOException, InvalidIDException {
+        return controller.validateEnter(this.station, barcode, stationCatalog, certificateCatalog, travelingHistoryCatalog);
     }
     public EnterAction(char station){
         this.station = station;

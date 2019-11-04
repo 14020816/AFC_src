@@ -1,7 +1,8 @@
 package com.company;
 
-import java.util.List;
+import hust.soict.se.customexception.InvalidIDException;
 
+import java.util.List;
 
 public abstract class Certificate {
 
@@ -10,7 +11,7 @@ public abstract class Certificate {
 
 	public static Certificate getCertificate(String ID, List<Certificate> certificateCatalog) {
 		for(int i = 0; i < certificateCatalog.size(); i++){
-			if(certificateCatalog.get(i).ID == ID){
+			if(certificateCatalog.get(i).ID.equals(ID)){
 				return  certificateCatalog.get(i);
 			}
 		}
@@ -32,4 +33,18 @@ public abstract class Certificate {
 		}
 	}
 
+	public static Certificate getCertificateByBarcode(String barcode, List<Certificate> certificateCatalog) throws InvalidIDException {
+		if(barcode == null || barcode.isEmpty()){
+			return  null;
+		}
+		String card = CardScannerInterface.requestConvertBarCodeToCardID(barcode);
+		if(card != null){
+			return  getCertificate(card, certificateCatalog);
+		}
+		String ticket = TicketRecognierInterface.requestConvertBarCodeToTicketID(barcode);
+		if(ticket != null){
+			return  getCertificate(ticket, certificateCatalog);
+		}
+		return  null;
+	}
 }

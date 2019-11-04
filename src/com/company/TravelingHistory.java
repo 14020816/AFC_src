@@ -21,30 +21,24 @@ public class TravelingHistory {
 	private char station;
 
 
-	public static List<TravelingHistory> travelCatalog;
+//	public static List<TravelingHistory> travelCatalog;
 
-	public static void recordEnterTraveling(String time, char station, String id) {
+	public static void recordEnterTraveling(String time, char station, String id, List<TravelingHistory> travelCatalog) {
 		if(travelCatalog == null){
 			travelCatalog = new ArrayList<TravelingHistory>();
 		}
 		travelCatalog.add(new TravelingHistory(ACTION.ENTER, time, station,id));
 	}
 
-	public static void recordExitTraveling(String endTime, int endStation, String id) {
-
+	public static void recordExitTraveling(String endTime, char endStation, String id, List<TravelingHistory> travelCatalog) {
+		if(travelCatalog == null){
+			travelCatalog = new ArrayList<TravelingHistory>();
+		}
+		travelCatalog.add(new TravelingHistory(ACTION.EXIT, endTime, endStation,id));
 	}
 
-	public int calculateDistance() {
-		return 0;
-	}
 
-	public void saveTravelingInformation() {
 
-	}
-
-	public int caculateDistance() {
-		return 0;
-	}
 
 	public TravelingHistory(ACTION action, String time, char station, String certificateID){
 		this.action = action;
